@@ -31,15 +31,15 @@ fun HabitReminderTopAppBar(
     onBackClick: (() -> Unit)? = null,
 ) {
     Surface(
-        color = Color.DarkGray,
+        color = Color.Black,
         modifier = modifier
-                .fillMaxWidth()
-                .height(64.dp),
+            .fillMaxWidth()
+            .height(64.dp),
     ) {
         Row(
             modifier = Modifier
-                    .fillMaxSize()
-                    .padding(horizontal = 16.dp),
+                .fillMaxSize()
+                .padding(horizontal = 16.dp),
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically,
         ) {
@@ -49,9 +49,9 @@ fun HabitReminderTopAppBar(
                     tint = Color.White,
                     contentDescription = "Back",
                     modifier = Modifier
-                            .padding(end = 16.dp)
-                            .clickable { it() }
-                            .size(24.dp)
+                        .padding(end = 16.dp)
+                        .clickable { it() }
+                        .size(24.dp)
                 )
             }
             Text(

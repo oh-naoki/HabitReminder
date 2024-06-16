@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Text
@@ -26,7 +25,7 @@ fun WeeklyCalendar(
     val daysOfWeek = listOf("月", "火", "水", "木", "金", "土", "日")
     Row(
         horizontalArrangement = Arrangement.SpaceBetween,
-        modifier = modifier.fillMaxWidth().padding(horizontal = 16.dp)
+        modifier = modifier.fillMaxWidth()
     ) {
         for (day in daysOfWeek) {
             Column(
@@ -61,7 +60,7 @@ private fun WeekDay(
             .size(24.dp)
             .then(
                 if (isComplete) {
-                    Modifier.background(Color.Blue, shape = CircleShape)
+                    Modifier.background(HabitColor.Blue, shape = CircleShape)
                 } else Modifier
             )
     ) {
