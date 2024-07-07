@@ -15,6 +15,9 @@ junit = "4.13.2"
 kotlin = "2.0.0"
 kotlinxDatetime = "0.4.1"
 mokoPermissions = "0.18.0"
+kmpnotifier = "1.0.0"
+google-services = "4.4.2"
+startupRuntime = "1.1.1"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -30,6 +33,8 @@ androidx-activity-compose = { module = "androidx.activity:activity-compose", ver
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinxDatetime" }
 moko-permissions = { module = "dev.icerock.moko:permissions", version.ref = "mokoPermissions" }
 moko-permissions-compose = { module = "dev.icerock.moko:permissions-compose", version.ref = "mokoPermissions" }
+kmp-notifier = { module = "io.github.mirzemehdi:kmpnotifier", version.ref = "kmpnotifier" }
+androidx-startup-runtime = { group = "androidx.startup", name = "startup-runtime", version.ref = "startupRuntime" }
 
 
 [plugins]
@@ -38,3 +43,4 @@ androidLibrary = { id = "com.android.library", version.ref = "agp" }
 jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+googleServices = { id = "com.google.gms.google-services", version.ref = "google-services" }

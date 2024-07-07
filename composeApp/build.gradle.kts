@@ -24,6 +24,7 @@ kotlin {
         iosTarget.binaries.framework {
             baseName = "ComposeApp"
             isStatic = true
+            export(libs.kmp.notifier)
         }
     }
 
@@ -43,6 +44,7 @@ kotlin {
             implementation(libs.kotlinx.datetime)
             implementation(libs.moko.permissions)
             implementation(libs.moko.permissions.compose)
+            api(libs.kmp.notifier)
         }
     }
 }
@@ -82,5 +84,8 @@ android {
     dependencies {
         debugImplementation(compose.uiTooling)
     }
+}
+dependencies {
+    implementation(libs.androidx.startup.runtime)
 }
 

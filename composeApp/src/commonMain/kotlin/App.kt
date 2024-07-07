@@ -27,6 +27,7 @@ import component.RemindItem
 import component.WeeklyCalendar
 import dev.icerock.moko.permissions.Permission
 import dev.icerock.moko.permissions.PermissionsController
+import dev.icerock.moko.permissions.compose.BindEffect
 import dev.icerock.moko.permissions.compose.PermissionsControllerFactory
 import dev.icerock.moko.permissions.compose.rememberPermissionsControllerFactory
 import kotlinx.coroutines.CoroutineScope
@@ -40,11 +41,19 @@ fun App() {
     val controller: PermissionsController =
         remember(factory) { factory.createPermissionsController() }
     val coroutineScope: CoroutineScope = rememberCoroutineScope()
+    val notificationManager = getNotificationManager()
 
-    LaunchedEffect(true) {
+    BindEffect(controller)
+    LaunchedEffect(Unit) {
         coroutineScope.launch {
             runCatching {
                 controller.providePermission(Permission.REMOTE_NOTIFICATION)
+                // TODO: リマインダーアイテム生成時に設定する
+                notificationManager.scheduleNotification(
+                    weekDay = 1,
+                    hour = 8,
+                    minute = 0
+                )
             }.onFailure {
                 controller.openAppSettings()
             }
