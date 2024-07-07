@@ -39,6 +39,7 @@ kotlin {
             implementation(compose.foundation)
             implementation(compose.material)
             implementation(compose.ui)
+            implementation(libs.androidx.lifecycle.viewModel)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
             implementation(libs.kotlinx.datetime)
