@@ -29,10 +29,10 @@ kotlin {
     }
 
     sourceSets {
-
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
+            implementation(libs.koin.android)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -45,6 +45,9 @@ kotlin {
             implementation(libs.kotlinx.datetime)
             implementation(libs.moko.permissions)
             implementation(libs.moko.permissions.compose)
+            implementation(libs.koin.core)
+            implementation(libs.koin.composeVM)
+            implementation(libs.androidx.startup.runtime)
             api(libs.kmp.notifier)
         }
     }
@@ -86,7 +89,3 @@ android {
         debugImplementation(compose.uiTooling)
     }
 }
-dependencies {
-    implementation(libs.androidx.startup.runtime)
-}
-
