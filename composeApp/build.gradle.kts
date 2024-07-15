@@ -7,9 +7,13 @@ plugins {
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.room)
 }
 
 kotlin {
+    sourceSets.commonMain {
+        kotlin.srcDir("build/generated/ksp/metadata")
+    }
     androidTarget {
         @OptIn(ExperimentalKotlinGradlePluginApi::class)
         compilerOptions {
@@ -26,6 +30,7 @@ kotlin {
             baseName = "ComposeApp"
             isStatic = true
             export(libs.kmp.notifier)
+            linkerOpts.add("-lsqlite3")
         }
     }
 
@@ -41,6 +46,7 @@ kotlin {
             implementation(compose.material)
             implementation(compose.ui)
             implementation(libs.androidx.lifecycle.viewModel)
+            implementation(libs.androidx.room.rumtime)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
             implementation(libs.kotlinx.datetime)
@@ -49,6 +55,7 @@ kotlin {
             implementation(libs.koin.core)
             implementation(libs.koin.composeVM)
             implementation(libs.androidx.startup.runtime)
+            implementation(libs.sqlite.bundled)
             api(libs.kmp.notifier)
         }
     }
@@ -88,5 +95,20 @@ android {
     }
     dependencies {
         debugImplementation(compose.uiTooling)
+    }
+}
+
+room {
+    schemaDirectory("$projectDir/schemas")
+}
+
+dependencies {
+    // Room
+    add("kspCommonMainMetadata", libs.androidx.room.compiler)
+}
+
+tasks.withType<org.jetbrains.kotlin.gradle.dsl.KotlinCompile<*>>().configureEach {
+    if (name != "kspCommonMainKotlinMetadata") {
+        dependsOn("kspCommonMainKotlinMetadata")
     }
 }
