@@ -5,9 +5,10 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 fun getDatabaseBuilder(context: Context): RoomDatabase.Builder<AppDatabase> {
-    return Room.databaseBuilder(
-        context,
-        AppDatabase::class.java,
-        "my_room.db"
+    val appContext = context.applicationContext
+    val dbFile = appContext.getDatabasePath("my_room.db")
+    return Room.databaseBuilder<AppDatabase>(
+        context = appContext,
+        name = dbFile.absolutePath
     )
 }

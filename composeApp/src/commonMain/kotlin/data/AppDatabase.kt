@@ -4,9 +4,13 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import data.dao.HabitDao
 import data.entity.Habit
+import data.entity.HabitCompletion
 import data.entity.Reminder
 
-@Database(entities = [Habit::class, Reminder::class], version = 1)
+@Database(
+    entities = [Habit::class, Reminder::class, HabitCompletion::class],
+    version = 2,
+)
 abstract class AppDatabase : RoomDatabase(), DB {
     abstract fun habitDao(): HabitDao
     override fun clearAllTables() {

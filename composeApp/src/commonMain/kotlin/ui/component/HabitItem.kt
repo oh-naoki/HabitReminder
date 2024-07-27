@@ -2,6 +2,7 @@ package ui.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -30,6 +31,7 @@ fun RemindItem(
     isComplete: Boolean,
     icon: ImageVector,
     title: String,
+    onClickComplete: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Row(
@@ -39,6 +41,7 @@ fun RemindItem(
         if (isComplete) {
             Box(
                 modifier = Modifier
+                    .clickable { onClickComplete() }
                     .size(24.dp)
                     .background(color = HabitColor.Blue, shape = CircleShape)
             ) {
@@ -54,6 +57,7 @@ fun RemindItem(
         } else {
             Box(
                 modifier = Modifier
+                    .clickable { onClickComplete() }
                     .size(24.dp)
                     .border(
                         width = 2.dp,

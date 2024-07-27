@@ -13,8 +13,6 @@ import ui.home.HomeViewModel
 
 
 fun appModule() = module {
-    viewModelOf(::HomeViewModel)
-
     single<AppDatabase> {
         get<RoomDatabase.Builder<AppDatabase>>()
             .fallbackToDestructiveMigrationOnDowngrade(dropAllTables = false)
@@ -28,4 +26,5 @@ fun appModule() = module {
             habitDao = get<AppDatabase>().habitDao()
         )
     }
+    viewModelOf(::HomeViewModel)
 }

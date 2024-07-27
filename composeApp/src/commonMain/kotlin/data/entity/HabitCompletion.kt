@@ -5,6 +5,7 @@ import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 
 @Entity(
+    tableName = "HabitCompletion",
     foreignKeys = [ForeignKey(
         entity = Habit::class,
         parentColumns = ["habitId"],
@@ -12,10 +13,8 @@ import androidx.room.PrimaryKey
         onDelete = ForeignKey.CASCADE
     )]
 )
-data class Reminder(
-    @PrimaryKey(autoGenerate = true) val reminderId: Int = 0,
-    val habitId: Int = -1,// TODO: どうにかしたい
-    val dayOfWeek: Int,
-    val hour: Int,
-    val minute: Int
+data class HabitCompletion(
+    @PrimaryKey val habitId: Int,
+    val unixTime: Long,
+    val isCompleted: Boolean
 )
