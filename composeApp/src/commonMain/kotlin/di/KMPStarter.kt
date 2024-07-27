@@ -8,7 +8,10 @@ class KoinKMPStarter {
     fun init(config: KoinAppDeclaration? = null) {
         startKoin {
             config?.invoke(this)
-            modules(appModule())
+            modules(
+                appModule(),
+                platformModule()
+            )
         }
     }
 }
