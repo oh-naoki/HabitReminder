@@ -10,7 +10,7 @@ import org.koin.compose.viewmodel.dsl.viewModelOf
 import org.koin.dsl.module
 import repository.HabitRepositoryImpl
 import ui.home.HomeViewModel
-
+import ui.input.InputViewModel
 
 fun appModule() = module {
     single<AppDatabase> {
@@ -27,4 +27,5 @@ fun appModule() = module {
         )
     }
     viewModelOf(::HomeViewModel)
+    viewModelOf(::InputViewModel)
 }

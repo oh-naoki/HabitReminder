@@ -45,6 +45,7 @@ kotlin {
             implementation(compose.foundation)
             implementation(compose.material)
             implementation(compose.ui)
+            implementation(libs.androidx.navigation.compose)
             implementation(libs.androidx.lifecycle.viewModel)
             implementation(libs.androidx.room.rumtime)
             implementation(compose.components.resources)

@@ -11,7 +11,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import ui.component.HabitReminderTheme
-import ui.home.HomeScreen
 
 @Composable
 @Preview
@@ -34,12 +33,12 @@ fun App() {
                     minute = 0
                 )
             }.onFailure {
-                controller.openAppSettings()
+//                controller.openAppSettings()
             }
         }
     }
 
     HabitReminderTheme {
-        HomeScreen()
+        AppNavHost()
     }
 }
