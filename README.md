@@ -1,14 +1,10 @@
-This is a Kotlin Multiplatform project targeting Android, iOS.
+Compose MultiPlatform Project
+==============================
 
-* `/composeApp` is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - `commonMain` is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    `iosMain` would be the right folder for such calls.
+KMP + ComposeMultiplatform の学習用プロジェクトです。
+習慣をリマインドしてほしい日時と登録することで、指定した日時に通知を送信するアプリです。
+※ iOSで登録した日時を週またぎで連続的に通知することはできません。
 
-* `/iosApp` contains iOS applications. Even if you’re sharing your UI with Compose Multiplatform,
-  you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
-
-
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+|                                           Android                                           |                                             iOS                                             |
+|:-------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/user-attachments/assets/7433fb91-8557-43ce-a963-efd9e1bc181b"> | <img src="https://github.com/user-attachments/assets/597a4706-c639-495e-a993-73508102be98"> |
