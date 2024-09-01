@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
@@ -33,7 +32,6 @@ import org.koin.compose.viewmodel.koinViewModel
 import org.koin.core.annotation.KoinExperimentalAPI
 import ui.component.HabitReminderTopAppBar
 import ui.component.RemindItem
-import ui.component.WeeklyCalendar
 
 object HomeNavGraph {
     const val route = "home"
@@ -84,9 +82,6 @@ fun HomeScreen(
                 )
         ) {
             Spacer(modifier = Modifier.size(16.dp))
-            WeeklyCalendar(
-                modifier = Modifier.fillMaxWidth()
-            )
             LazyColumn(
                 verticalArrangement = Arrangement.spacedBy(8.dp),
                 contentPadding = PaddingValues(16.dp)
