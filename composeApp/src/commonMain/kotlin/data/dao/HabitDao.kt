@@ -1,7 +1,6 @@
 package data.dao
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -26,8 +25,8 @@ interface HabitDao {
     @Update
     suspend fun updateHabit(habit: Habit)
 
-    @Delete
-    suspend fun deleteHabit(habit: Habit)
+    @Query("DELETE FROM Habit WHERE habitId = :habitId")
+    suspend fun deleteHabit(habitId: Int)
 
     @Query("SELECT * FROM Habit WHERE habitId = :habitId")
     suspend fun getHabitById(habitId: Int): Habit?

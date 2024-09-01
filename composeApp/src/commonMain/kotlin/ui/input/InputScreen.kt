@@ -87,12 +87,17 @@ fun InputScreen(
     InputContent(
         habitItem = uiState.habitItem,
         remindDayOfWeek = uiState.remindDayOfWeek,
+        canDelete = uiState.canDelete(),
         modifier = modifier,
         onTitleChanged = viewModel::onTitleChanged,
         onDescriptionChanged = viewModel::onDescriptionChanged,
         onRemindDayOfWeekChanged = viewModel::onChangeRemindDayOfWeek,
         onRemindTimeChanged = viewModel::onRemindTimeChanged,
         onSaved = viewModel::saveHabit,
+        onDelete = {
+            viewModel.deleteHabit(it)
+            onBack()
+        },
     )
 }
 
@@ -100,12 +105,14 @@ fun InputScreen(
 private fun InputContent(
     habitItem: HabitItem,
     remindDayOfWeek: Set<Int>,
+    canDelete: Boolean,
     modifier: Modifier = Modifier,
     onTitleChanged: (String) -> Unit,
     onDescriptionChanged: (String) -> Unit,
     onRemindDayOfWeekChanged: (Int) -> Unit,
     onRemindTimeChanged: (Int, Int) -> Unit,
     onSaved: () -> Unit,
+    onDelete: (habitId: Int) -> Unit,
 ) {
     Scaffold(
         modifier = modifier,
@@ -213,6 +220,26 @@ private fun InputContent(
                         color = HabitColor.White,
                     )
                 )
+            }
+            if (canDelete) {
+                Spacer(modifier = Modifier.height(16.dp))
+                Button(
+                    onClick = { onDelete(checkNotNull(habitItem.id)) },
+                    modifier = Modifier.fillMaxWidth(),
+                    contentPadding = PaddingValues(16.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        backgroundColor = HabitColor.Red,
+                    ),
+                    shape = RoundedCornerShape(8.dp)
+                ) {
+                    Text(
+                        text = "削除",
+                        style = TextStyle(
+                            fontSize = 16.sp,
+                            color = HabitColor.White,
+                        )
+                    )
+                }
             }
         }
     }
