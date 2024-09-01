@@ -12,7 +12,6 @@ KMP + ComposeMultiplatform の学習用プロジェクトです。
 - Compose Multiplatform
     - Navigation Compose
     - Jetpack ViewModel
-- Ktor
 - Room
 - Koin
 
