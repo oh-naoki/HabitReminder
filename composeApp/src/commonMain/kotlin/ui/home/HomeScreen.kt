@@ -27,20 +27,36 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavGraphBuilder
+import androidx.navigation.compose.composable
 import org.koin.compose.viewmodel.koinViewModel
 import org.koin.core.annotation.KoinExperimentalAPI
 import ui.component.HabitReminderTopAppBar
 import ui.component.RemindItem
 import ui.component.WeeklyCalendar
 
+object HomeNavGraph {
+    const val route = "home"
+}
+
+fun NavGraphBuilder.homeNavGraph(
+    navigateInput: (habitId: Int?) -> Unit
+) {
+    composable(HomeNavGraph.route) {
+        HomeScreen(navigateInput)
+    }
+}
+
 @OptIn(KoinExperimentalAPI::class)
 @Composable
 fun HomeScreen(
+    navigateInput: (habitId: Int?) -> Unit,
     viewModel: HomeViewModel = koinViewModel<HomeViewModel>(),
     modifier: Modifier = Modifier
 ) {
     val uiState by viewModel.uiState.collectAsState()
     Scaffold(
+        modifier = modifier,
         backgroundColor = Color.Black,
         topBar = {
             HabitReminderTopAppBar(
@@ -50,7 +66,9 @@ fun HomeScreen(
                         imageVector = Icons.Default.Add,
                         tint = Color.White,
                         contentDescription = "Add",
-                        modifier = Modifier.clickable { /* TODO: Add click */ }
+                        modifier = Modifier.clickable {
+                            navigateInput(null)
+                        }
                             .size(24.dp)
                     )
                 },
@@ -78,6 +96,7 @@ fun HomeScreen(
                         isComplete = it.isComplete,
                         title = it.title,
                         icon = Icons.Default.Check,
+                        onClickHabit = { navigateInput(it.id) },
                         onClickComplete = { viewModel.onClickCompletion(it) }
                     )
                 }

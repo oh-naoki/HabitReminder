@@ -11,7 +11,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import ui.component.HabitReminderTheme
-import ui.home.HomeScreen
 
 @Composable
 @Preview
@@ -27,19 +26,13 @@ fun App() {
         coroutineScope.launch {
             runCatching {
                 controller.providePermission(Permission.REMOTE_NOTIFICATION)
-                // TODO: リマインダーアイテム生成時に設定する
-                notificationManager.scheduleNotification(
-                    weekDay = 1,
-                    hour = 8,
-                    minute = 0
-                )
             }.onFailure {
-                controller.openAppSettings()
+//                controller.openAppSettings()
             }
         }
     }
 
     HabitReminderTheme {
-        HomeScreen()
+        AppNavHost()
     }
 }

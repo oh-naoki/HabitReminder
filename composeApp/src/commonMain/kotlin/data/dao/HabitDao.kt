@@ -34,7 +34,7 @@ interface HabitDao {
 
     @Transaction
     @Query("SELECT * FROM Habit WHERE habitId = :habitId")
-    suspend fun getHabitWithReminders(habitId: Int): List<HabitWithReminders>
+    suspend fun getHabitWithReminders(habitId: Int): HabitWithReminders
 
     @Transaction
     @Query("SELECT * FROM Habit")
@@ -62,11 +62,9 @@ interface HabitDao {
     ): Flow<List<HabitWithRemindersAndCompletions>>
 
     @Transaction
-    suspend fun insertHabitWithReminders(habit: Habit, reminders: List<Reminder>) {
+    suspend fun insertHabitWithReminders(habit: Habit, reminder: Reminder) {
         val habitId = insertHabit(habit)
-        reminders.forEach { reminder ->
-            insertReminder(reminder.copy(habitId = habitId.toInt()))
-        }
+        insertReminder(reminder.copy(habitId = habitId.toInt()))
     }
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

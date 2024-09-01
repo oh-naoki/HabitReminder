@@ -9,5 +9,5 @@ data class HabitWithReminders(
         parentColumn = "habitId",
         entityColumn = "habitId"
     )
-    val reminders: List<Reminder>
+    val reminder: Reminder
 )

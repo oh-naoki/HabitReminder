@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
@@ -26,11 +27,13 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun RemindItem(
     isComplete: Boolean,
     icon: ImageVector,
     title: String,
+    onClickHabit: () -> Unit,
     onClickComplete: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -71,7 +74,8 @@ fun RemindItem(
             shape = RoundedCornerShape(16.dp),
             elevation = 4.dp,
             backgroundColor = HabitColor.Blue,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            onClick = onClickHabit,
         ) {
             Row(
                 modifier = Modifier.padding(horizontal = 16.dp, vertical = 32.dp),
