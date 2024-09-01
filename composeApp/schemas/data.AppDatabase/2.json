@@ -1,8 +1,8 @@
 {
   "formatVersion": 1,
   "database": {
-    "version": 1,
-    "identityHash": "fd68b15429edbd7c2cc6de1be9033fe3",
+    "version": 2,
+    "identityHash": "7ed2a1539c9b52484bfd5e7c7ae6d741",
     "entities": [
       {
         "tableName": "Habit",
@@ -91,14 +91,8 @@
       },
       {
         "tableName": "HabitCompletion",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`completionId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `habitId` INTEGER NOT NULL, `unixTime` INTEGER NOT NULL, `isCompleted` INTEGER NOT NULL, FOREIGN KEY(`habitId`) REFERENCES `Habit`(`habitId`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`habitId` INTEGER NOT NULL, `unixTime` INTEGER NOT NULL, `isCompleted` INTEGER NOT NULL, PRIMARY KEY(`habitId`), FOREIGN KEY(`habitId`) REFERENCES `Habit`(`habitId`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
-          {
-            "fieldPath": "completionId",
-            "columnName": "completionId",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
           {
             "fieldPath": "habitId",
             "columnName": "habitId",
@@ -119,9 +113,9 @@
           }
         ],
         "primaryKey": {
-          "autoGenerate": true,
+          "autoGenerate": false,
           "columnNames": [
-            "completionId"
+            "habitId"
           ]
         },
         "foreignKeys": [
@@ -141,7 +135,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'fd68b15429edbd7c2cc6de1be9033fe3')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '7ed2a1539c9b52484bfd5e7c7ae6d741')"
     ]
   }
 }

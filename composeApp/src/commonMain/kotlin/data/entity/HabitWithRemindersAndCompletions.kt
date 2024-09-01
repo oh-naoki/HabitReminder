@@ -9,7 +9,7 @@ data class HabitWithRemindersAndCompletions(
         parentColumn = "habitId",
         entityColumn = "habitId"
     )
-    val reminders: List<Reminder>,
+    val reminder: Reminder,
     @Relation(
         parentColumn = "habitId",
         entityColumn = "habitId"

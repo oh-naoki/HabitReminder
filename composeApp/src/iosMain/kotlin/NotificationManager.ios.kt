@@ -7,7 +7,7 @@ import platform.UserNotifications.UNNotificationRequest
 import platform.UserNotifications.UNNotificationSound
 import platform.UserNotifications.UNUserNotificationCenter
 
-class IOSNotificationManager : NotificationManager {
+class IOSLocalNotificationManager : LocalNotificationManager {
     override fun requestAuthorization() {
         val center = UNUserNotificationCenter.currentNotificationCenter()
         center.requestAuthorizationWithOptions(
@@ -24,12 +24,14 @@ class IOSNotificationManager : NotificationManager {
     override fun scheduleNotification(
         weekDay: Int,
         hour: Int,
-        minute: Int
+        minute: Int,
+        title: String,
+        body: String
     ) {
         val center = UNUserNotificationCenter.currentNotificationCenter()
         val content = UNMutableNotificationContent().apply {
-            setTitle("おはようございます")
-            setBody("今日も一日頑張りましょう！")
+            setTitle(title)
+            setBody(body)
             setSound(UNNotificationSound.defaultSound)
         }
 
@@ -51,4 +53,4 @@ class IOSNotificationManager : NotificationManager {
     }
 }
 
-actual fun getNotificationManager(): NotificationManager = IOSNotificationManager()
+actual fun getNotificationManager(): LocalNotificationManager = IOSLocalNotificationManager()

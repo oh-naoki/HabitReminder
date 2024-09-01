@@ -17,9 +17,11 @@ fun AppNavHost(
     ) {
         homeNavGraph(
             navigateInput = {
-                navController.navigate(InputNavGraph.route)
+                navController.navigate(InputNavGraph.route + "?id=${it ?: ""}")
             }
         )
-        inputNavGraph()
+        inputNavGraph(
+            navController = navController
+        )
     }
 }

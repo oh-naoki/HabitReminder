@@ -8,5 +8,9 @@ data class Habit(
     @PrimaryKey(autoGenerate = true) val habitId: Int = 0,
     val habitName: String,
     val description: String
-)
+) {
+    companion object {
+        fun empty() = Habit(0, "", "")
+    }
+}
 

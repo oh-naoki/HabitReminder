@@ -26,6 +26,7 @@ fun appModule() = module {
             habitDao = get<AppDatabase>().habitDao()
         )
     }
+
     viewModelOf(::HomeViewModel)
     viewModelOf(::InputViewModel)
 }

@@ -40,7 +40,7 @@ object HomeNavGraph {
 }
 
 fun NavGraphBuilder.homeNavGraph(
-    navigateInput: () -> Unit
+    navigateInput: (habitId: Int?) -> Unit
 ) {
     composable(HomeNavGraph.route) {
         HomeScreen(navigateInput)
@@ -50,7 +50,7 @@ fun NavGraphBuilder.homeNavGraph(
 @OptIn(KoinExperimentalAPI::class)
 @Composable
 fun HomeScreen(
-    navigateInput: () -> Unit,
+    navigateInput: (habitId: Int?) -> Unit,
     viewModel: HomeViewModel = koinViewModel<HomeViewModel>(),
     modifier: Modifier = Modifier
 ) {
@@ -66,7 +66,9 @@ fun HomeScreen(
                         imageVector = Icons.Default.Add,
                         tint = Color.White,
                         contentDescription = "Add",
-                        modifier = Modifier.clickable { navigateInput() }
+                        modifier = Modifier.clickable {
+                            navigateInput(null)
+                        }
                             .size(24.dp)
                     )
                 },
@@ -94,7 +96,7 @@ fun HomeScreen(
                         isComplete = it.isComplete,
                         title = it.title,
                         icon = Icons.Default.Check,
-                        onClickHabit = {},
+                        onClickHabit = { navigateInput(it.id) },
                         onClickComplete = { viewModel.onClickCompletion(it) }
                     )
                 }

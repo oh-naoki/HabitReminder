@@ -21,18 +21,9 @@ class HomeViewModel(
     val uiState: StateFlow<HomeUiState> = _uiState.asStateFlow()
 
     init {
-        viewModelScope.launch {
-            _uiState.update {
-                it.copy(
-                    isLoading = true,
-                )
-            }
-            habitRepository.addHabit(
-                HabitItem(
-                    isComplete = false,
-                    title = "Read a book",
-                    reminder = emptyList()
-                )
+        _uiState.update {
+            it.copy(
+                isLoading = true,
             )
         }
         habitRepository.fetchHabits().onEach { habits ->

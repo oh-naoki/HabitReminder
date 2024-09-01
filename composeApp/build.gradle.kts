@@ -57,6 +57,7 @@ kotlin {
             implementation(libs.koin.composeVM)
             implementation(libs.androidx.startup.runtime)
             implementation(libs.sqlite.bundled)
+            implementation(libs.datetime.wheel.picker)
             api(libs.kmp.notifier)
         }
     }

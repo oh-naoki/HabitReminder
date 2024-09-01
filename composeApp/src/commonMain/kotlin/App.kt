@@ -26,12 +26,6 @@ fun App() {
         coroutineScope.launch {
             runCatching {
                 controller.providePermission(Permission.REMOTE_NOTIFICATION)
-                // TODO: リマインダーアイテム生成時に設定する
-                notificationManager.scheduleNotification(
-                    weekDay = 1,
-                    hour = 8,
-                    minute = 0
-                )
             }.onFailure {
 //                controller.openAppSettings()
             }
