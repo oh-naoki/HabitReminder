@@ -3,6 +3,7 @@ Compose MultiPlatform Project
 
 KMP + ComposeMultiplatform の学習用プロジェクトです。
 習慣をリマインドしてほしい日時と登録することで、指定した日時に通知を送信するアプリです。
+
 ※ iOSで登録した日時を週またぎで連続的に通知することはできません。
 
 |                                           Android                                           |                                             iOS                                             |
