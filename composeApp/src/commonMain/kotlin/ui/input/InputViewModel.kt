@@ -120,6 +120,12 @@ class InputViewModel(
         }
     }
 
+    fun deleteHabit(habitId: Int) {
+        viewModelScope.launch {
+            habitRepository.deleteHabit(habitId)
+        }
+    }
+
     fun confirmSaved() {
         _uiState.update { it.copy(isSaved = false) }
     }
@@ -132,4 +138,8 @@ data class InputUiState(
     val isLoading: Boolean = false,
     val error: Throwable? = null,
     val isSaved: Boolean = false,
-)
+) {
+    fun canDelete(): Boolean {
+        return habitItem.id != null
+    }
+}

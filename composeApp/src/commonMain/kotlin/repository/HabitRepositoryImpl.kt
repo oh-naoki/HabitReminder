@@ -59,6 +59,10 @@ class HabitRepositoryImpl(
         habitDao.updateCompletion(completion)
     }
 
+    override suspend fun deleteHabit(habitId: Int) {
+        habitDao.deleteHabit(habitId)
+    }
+
     private fun HabitItem.toHabit(): data.entity.Habit {
         return data.entity.Habit(
             habitId = id ?: 0,
